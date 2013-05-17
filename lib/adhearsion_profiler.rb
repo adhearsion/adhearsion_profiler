@@ -17,6 +17,8 @@ module AdhearsionProfiler
 
           result = RubyProf.stop
 
+          Dir.mkdir 'profiles' unless Dir.exists?('profiles')
+
           printer = RubyProf::MultiPrinter.new(result)
           printer.print path: "profiles", profile: Process.pid
         end
